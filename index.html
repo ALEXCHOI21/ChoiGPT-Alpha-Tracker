@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Tracker | ChoiGPT Corp.</title>
+    <link rel="stylesheet" href="alpha_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">ALPHA TRACKER <small>v1.0</small></div>
+        <div class="timestamp" id="lastUpdated">SYNCING...</div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard-grid">
+            <!-- [NEW] My Wallet (Real Data) -->
+            <section class="glass-card" style="grid-column: span 12; margin-bottom: 2rem; border: 1px solid var(--success); background: rgba(0, 255, 128, 0.05);">
+                <div class="card-title" style="color: var(--success);">💼 My Binance Futures Wallet</div>
+                <div style="display: flex; gap: 2rem; align-items: center; margin-top: 1rem;">
+                    <div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub);">Total Balance (USDT)</div>
+                        <div style="font-size: 1.8rem; font-weight: 800; color: #fff;" id="walletTotal">--</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.8rem; color: var(--text-sub);">Available (USDT)</div>
+                        <div style="font-size: 1.8rem; font-weight: 800; color: #fff;" id="walletFree">--</div>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <div style="font-size: 0.8rem; color: var(--text-sub); margin-bottom: 0.5rem;">Active Positions</div>
+                    <div id="walletPositions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <span style="color: var(--text-sub); font-size: 0.9rem;">동기화 중...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Market Health Stats -->
+            <section class="health-stats">
+                <div class="glass-card stat-item">
+                    <div class="card-title">📉 공포 & 탐욕 지수</div>
+                    <div class="stat-value" id="fgValue">--</div>
+                    <div class="stat-label" id="fgLabel">Loading...</div>
+                </div>
+                <div class="glass-card stat-item">
+                    <div class="card-title">🇰🇷 김치 프리미엄</div>
+                    <div class="stat-value" id="kpValue">--%</div>
+                    <div class="stat-label">BINANCE vs UPBIT</div>
+                </div>
+                <div class="glass-card stat-item">
+                    <div class="card-title">🐋 고래 유입 지수</div>
+                    <div class="stat-value" style="color: var(--success);" id="whaleInflow">+14.2%</div>
+                    <div class="stat-label">NET CEX INFLOW (24H)</div>
+                </div>
+                <div class="glass-card stat-item">
+                    <div class="card-title">📈 시장 점유율 (Dominance)</div>
+                    <div class="stat-value" id="btcDominance">52.4%</div>
+                    <div class="stat-label">BTC DOMINANCE</div>
+                </div>
+            </section>
+
+            <!-- [NEW] Early Alpha: Accumulation Gems -->
+            <section class="glass-card signal-list-section" style="grid-column: span 12; margin-bottom: 2rem; border: 1px solid var(--accent-primary);">
+                <div class="card-title" style="color: var(--accent-primary);">💎 Early Alpha: Accumulation Gems (매집 중)</div>
+                <table class="signal-table">
+                    <thead>
+                        <tr>
+                            <th>SYMBOL</th>
+                            <th>PRICE (USDT)</th>
+                            <th>24H CHANGE</th>
+                            <th>ACCUM. SCORE</th>
+                            <th>HISTORICAL ANALOGY</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gemsTableBody">
+                        <tr><td colspan="6" style="text-align:center;">매집 데이터를 분석 중입니다...</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Alpha Signal List (Trending) -->
+            <section class="glass-card signal-list-section">
+                <div class="card-title">🚀 Top Trending (Moonshots)</div>
+                <table class="signal-table">
+                    <thead>
+                        <tr>
+                            <th>SYMBOL</th>
+                            <th>PRICE (USDT)</th>
+                            <th>24H CHANGE</th>
+                            <th>VOLUME (M)</th>
+                            <th>SCORE</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alphaTableBody">
+                        <!-- Data and Template via JS -->
+                        <tr><td colspan="6" style="text-align:center;">데이터를 동기화 중입니다...</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Trending Top 3 & DeFi -->
+            <section class="trending-section">
+                <div class="glass-card" style="margin-bottom: 1.5rem;">
+                    <div class="card-title">🔥 Trending Top 3 (Alpha)</div>
+                    <div id="trendingList">
+                        <!-- Trending items via JS -->
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <div class="card-title">🌐 DeFi Hot Issues</div>
+                    <div id="defiList">
+                        <!-- DeFi list via JS -->
+                    </div>
+                </div>
+
+                <div class="glass-card" style="margin-top: 1.5rem; background: rgba(0, 242, 255, 0.05);">
+                    <div class="card-title" style="color: var(--accent-primary);">💡 ChoiGPT Strategic Verdict</div>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-sub);" id="strategicVerdict">
+                        시장 공포 지수 47 수준에서 발생하는 알트코인 반등은 전형적인 스마트 머니의 매집 기회가 될 수 있습니다. MON, RAVE 등 거래량 폭발 종목의 추격 매수보다는 횡보 매집을 노리십시오.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="alpha_app.js"></script>
+</body>
+</html>

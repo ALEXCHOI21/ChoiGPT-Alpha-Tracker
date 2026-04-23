@@ -1,0 +1,207 @@
+:root {
+    --bg-main: #0a0b1e;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --accent-primary: #00f2ff;
+    --accent-secondary: #7000ff;
+    --text-main: #ffffff;
+    --text-sub: #a0a0c0;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --success: #00ff88;
+    --danger: #ff0055;
+    --warning: #ffaa00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background: var(--bg-main);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(112, 0, 255, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(0, 242, 255, 0.1) 0px, transparent 50%);
+    color: var(--text-main);
+    min-height: 100vh;
+    padding-bottom: 2rem;
+    overflow-x: hidden;
+}
+
+header {
+    background: rgba(10, 11, 30, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.timestamp {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+}
+
+.container {
+    padding: 2rem 5%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+}
+
+/* Glass Card */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Market Health Stats */
+.health-stats {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+}
+
+/* Alpha Signal List */
+.signal-list-section {
+    grid-column: span 8;
+}
+
+.signal-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.signal-table th {
+    text-align: left;
+    padding: 1rem;
+    color: var(--text-sub);
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.signal-table td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.symbol-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+}
+
+.badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.badge-success { background: rgba(0, 255, 136, 0.1); color: var(--success); }
+.badge-danger { background: rgba(255, 0, 85, 0.1); color: var(--danger); }
+.badge-warning { background: rgba(255, 170, 0, 0.1); color: var(--warning); }
+
+/* Trending Section */
+.trending-section {
+    grid-column: span 4;
+}
+
+.trending-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+}
+
+.rank {
+    width: 24px;
+    height: 24px;
+    background: var(--accent-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 900;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .signal-list-section { grid-column: span 12; }
+    .trending-section { grid-column: span 12; }
+    .health-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .health-stats { grid-template-columns: 1fr; }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-grid > * {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
