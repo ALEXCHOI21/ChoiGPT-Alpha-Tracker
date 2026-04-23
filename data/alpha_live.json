@@ -1,64 +1,13 @@
 {
-    "last_updated": "2026-04-23 16:39:40",
+    "last_updated": "2026-04-24 08:22:48",
     "wallet": {
-        "total_usdt": 0.14,
-        "free_usdt": 0.14,
+        "total_usdt": 0,
+        "free_usdt": 0,
         "active_positions": []
     },
     "bithumb": {
         "total_krw": 0,
-        "domestic_gems": [
-            {
-                "symbol": "USDT",
-                "price": 1485.0,
-                "change": 0.54,
-                "volume_24h": 949.78,
-                "social_buzz_factor": 1.127,
-                "has_meme_narrative": false,
-                "score": 97.3,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "BTC",
-                "price": 115971000.0,
-                "change": 0.82,
-                "volume_24h": 974.24,
-                "social_buzz_factor": 1.141,
-                "has_meme_narrative": false,
-                "score": 95.9,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "ETH",
-                "price": 3491000.0,
-                "change": -0.96,
-                "volume_24h": 729.8,
-                "social_buzz_factor": 1.1480000000000001,
-                "has_meme_narrative": false,
-                "score": 95.2,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "XRP",
-                "price": 2113.0,
-                "change": -1.45,
-                "volume_24h": 652.28,
-                "social_buzz_factor": 1.1725,
-                "has_meme_narrative": false,
-                "score": 92.8,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "SOL",
-                "price": 127800.0,
-                "change": -1.54,
-                "volume_24h": 167.64,
-                "social_buzz_factor": 1.177,
-                "has_meme_narrative": false,
-                "score": 59.1,
-                "status": "DOMESTIC_ACCUM"
-            }
-        ]
+        "domestic_gems": []
     },
     "market_health": {
         "fear_greed": {
