@@ -31,7 +31,7 @@ async function fetchData() {
 }
 
 function updateUI(data) {
-    // 0. My Wallet (Real Data)
+    // 0. My Wallets (Real Data)
     if (data.wallet && data.wallet.total_usdt !== undefined) {
         document.getElementById('walletTotal').innerText = '$' + data.wallet.total_usdt.toLocaleString();
         document.getElementById('walletFree').innerText = '$' + data.wallet.free_usdt.toLocaleString();
@@ -43,19 +43,29 @@ function updateUI(data) {
                 const isProfit = p.unrealizedPnl >= 0;
                 const color = isProfit ? 'var(--success)' : 'var(--danger)';
                 const div = document.createElement('div');
-                div.style = `padding: 0.6rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 3px solid ${color}; display: flex; flex-direction: column; gap: 0.2rem; min-width: 140px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);`;
+                div.style = `padding: 0.4rem 0.8rem; background: rgba(255,255,255,0.05); border-radius: 6px; border-left: 2px solid ${color}; display: flex; flex-direction: column; gap: 0.1rem; min-width: 100px;`;
                 div.innerHTML = `
-                    <div style="font-weight: 700; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center;">
-                        ${p.symbol} 
-                        <span style="color:${color}; font-size: 0.75rem; border: 1px solid ${color}; padding: 1px 4px; border-radius: 4px;">${p.side}</span>
-                    </div>
-                    <div style="font-size: 0.8rem; color: var(--text-sub);">Size: ${p.size}</div>
-                    <div style="font-size: 0.95rem; font-weight: 800; color: ${color}; margin-top: 4px;">${isProfit ? '+' : ''}${p.unrealizedPnl.toFixed(2)} USDT</div>
+                    <div style="font-weight: 700; font-size: 0.8rem;">${p.symbol.split(':')[0]}</div>
+                    <div style="font-size: 0.85rem; font-weight: 800; color: ${color};">${isProfit ? '+' : ''}${p.unrealizedPnl.toFixed(1)}</div>
                 `;
                 posContainer.appendChild(div);
             });
         } else {
-            posContainer.innerHTML = '<span style="color: var(--text-sub); font-size: 0.9rem;">현재 보유 중인 포지션이 없습니다.</span>';
+            posContainer.innerHTML = '<span style="color: var(--text-sub); font-size: 0.75rem;">No Positions</span>';
+        }
+    }
+
+    if (data.bithumb) {
+        document.getElementById('bithumbTotal').innerText = data.bithumb.total_krw.toLocaleString() + ' KRW';
+        const btGemsContainer = document.getElementById('bithumbGems');
+        if (data.bithumb.domestic_gems && data.bithumb.domestic_gems.length > 0) {
+            btGemsContainer.innerHTML = data.bithumb.domestic_gems.map(gem => 
+                `<span style="display:inline-block; margin-right:8px; padding:2px 6px; background:rgba(255,94,0,0.1); border-radius:4px; color:#fff; font-weight:700;">
+                    ${gem.symbol} <small style="color:#ff5e00;">${gem.score}</small>
+                </span>`
+            ).join('');
+        } else {
+            btGemsContainer.innerText = '매집 포착 중...';
         }
     }
 

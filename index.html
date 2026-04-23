@@ -15,23 +15,36 @@
 
     <main class="container">
         <div class="dashboard-grid">
-            <!-- [NEW] My Wallet (Real Data) -->
-            <section class="glass-card" style="grid-column: span 12; margin-bottom: 2rem; border: 1px solid var(--success); background: rgba(0, 255, 128, 0.05);">
-                <div class="card-title" style="color: var(--success);">💼 My Binance Futures Wallet</div>
-                <div style="display: flex; gap: 2rem; align-items: center; margin-top: 1rem;">
+            <!-- [NEW] Wallets (Real Data) -->
+            <section class="glass-card" style="grid-column: span 6; margin-bottom: 2rem; border: 1px solid var(--success); background: rgba(0, 255, 128, 0.05);">
+                <div class="card-title" style="color: var(--success);">💼 My Binance Futures</div>
+                <div style="display: flex; gap: 1.5rem; align-items: center; margin-top: 1rem;">
                     <div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub);">Total Balance (USDT)</div>
-                        <div style="font-size: 1.8rem; font-weight: 800; color: #fff;" id="walletTotal">--</div>
+                        <div style="font-size: 0.7rem; color: var(--text-sub);">Balance (USDT)</div>
+                        <div style="font-size: 1.4rem; font-weight: 800; color: #fff;" id="walletTotal">--</div>
                     </div>
                     <div>
-                        <div style="font-size: 0.8rem; color: var(--text-sub);">Available (USDT)</div>
-                        <div style="font-size: 1.8rem; font-weight: 800; color: #fff;" id="walletFree">--</div>
+                        <div style="font-size: 0.7rem; color: var(--text-sub);">Available</div>
+                        <div style="font-size: 1.4rem; font-weight: 800; color: #fff;" id="walletFree">--</div>
                     </div>
                 </div>
-                <div style="margin-top: 1.5rem;">
-                    <div style="font-size: 0.8rem; color: var(--text-sub); margin-bottom: 0.5rem;">Active Positions</div>
-                    <div id="walletPositions" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <span style="color: var(--text-sub); font-size: 0.9rem;">동기화 중...</span>
+                <div id="walletPositions" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span style="color: var(--text-sub); font-size: 0.8rem;">Syncing...</span>
+                </div>
+            </section>
+
+            <section class="glass-card" style="grid-column: span 6; margin-bottom: 2rem; border: 1px solid #ff5e00; background: rgba(255, 94, 0, 0.05);">
+                <div class="card-title" style="color: #ff5e00;">💼 My Bithumb Spot</div>
+                <div style="display: flex; gap: 1.5rem; align-items: center; margin-top: 1rem;">
+                    <div>
+                        <div style="font-size: 0.7rem; color: var(--text-sub);">Balance (KRW)</div>
+                        <div style="font-size: 1.4rem; font-weight: 800; color: #fff;" id="bithumbTotal">--</div>
+                    </div>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <div style="font-size: 0.75rem; color: #ff5e00; font-weight: 700; margin-bottom: 0.3rem;">K-Whale Accumulation (빗썸 매집주)</div>
+                    <div id="bithumbGems" style="font-size: 0.8rem; color: var(--text-sub);">
+                        분석 중...
                     </div>
                 </div>
             </section>
