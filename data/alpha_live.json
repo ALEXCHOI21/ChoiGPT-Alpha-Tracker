@@ -1,79 +1,13 @@
 {
-    "last_updated": "2026-04-24 12:53:40",
+    "last_updated": "2026-04-24 12:54:42",
     "wallet": {
         "total_usdt": 0,
         "free_usdt": 0,
         "active_positions": []
     },
     "bithumb": {
-        "total_krw": 0.0,
-        "active_positions": [],
-        "watching_targets": [
-            {
-                "symbol": "USDT",
-                "price": 1488.0,
-                "volume": 89008238580.67482,
-                "change": 0.13
-            },
-            {
-                "symbol": "BTC",
-                "price": 115801000.0,
-                "volume": 67651113605.18139,
-                "change": 0.35
-            }
-        ],
-        "bithumb_gems": [
-            {
-                "symbol": "USDT",
-                "price": 1488.0,
-                "change": 0.13,
-                "volume_24h": 890.08,
-                "social_buzz_factor": 1.1065,
-                "has_meme_narrative": false,
-                "score": 99.3,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "BTC",
-                "price": 115801000.0,
-                "change": 0.35,
-                "volume_24h": 676.51,
-                "social_buzz_factor": 1.1175000000000002,
-                "has_meme_narrative": false,
-                "score": 98.2,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "ETH",
-                "price": 3439000.0,
-                "change": -1.06,
-                "volume_24h": 640.25,
-                "social_buzz_factor": 1.153,
-                "has_meme_narrative": false,
-                "score": 94.7,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "XRP",
-                "price": 2130.0,
-                "change": 1.28,
-                "volume_24h": 527.17,
-                "social_buzz_factor": 1.1640000000000001,
-                "has_meme_narrative": false,
-                "score": 93.6,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "SOL",
-                "price": 127500.0,
-                "change": 0.08,
-                "volume_24h": 127.6,
-                "social_buzz_factor": 1.104,
-                "has_meme_narrative": false,
-                "score": 62.4,
-                "status": "DOMESTIC_ACCUM"
-            }
-        ]
+        "total_krw": 0,
+        "domestic_gems": []
     },
     "market_health": {
         "fear_greed": {
