@@ -1,5 +1,5 @@
 {
-    "last_updated": "2026-04-24 09:38:36",
+    "last_updated": "2026-04-24 09:39:39",
     "wallet": {
         "total_usdt": 0,
         "free_usdt": 0,
@@ -7,58 +7,7 @@
     },
     "bithumb": {
         "total_krw": 0,
-        "domestic_gems": [
-            {
-                "symbol": "BTC",
-                "price": 116702000.0,
-                "change": 0.2,
-                "volume_24h": 714.24,
-                "social_buzz_factor": 1.11,
-                "has_meme_narrative": false,
-                "score": 99.0,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "USDT",
-                "price": 1488.0,
-                "change": 0.34,
-                "volume_24h": 981.88,
-                "social_buzz_factor": 1.117,
-                "has_meme_narrative": false,
-                "score": 98.3,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "XRP",
-                "price": 2140.0,
-                "change": 0.94,
-                "volume_24h": 562.02,
-                "social_buzz_factor": 1.147,
-                "has_meme_narrative": false,
-                "score": 95.3,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "ETH",
-                "price": 3476000.0,
-                "change": -1.45,
-                "volume_24h": 654.15,
-                "social_buzz_factor": 1.1725,
-                "has_meme_narrative": false,
-                "score": 92.8,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "SOL",
-                "price": 128300.0,
-                "change": -0.54,
-                "volume_24h": 134.76,
-                "social_buzz_factor": 1.127,
-                "has_meme_narrative": false,
-                "score": 60.8,
-                "status": "DOMESTIC_ACCUM"
-            }
-        ]
+        "domestic_gems": []
     },
     "market_health": {
         "fear_greed": {
