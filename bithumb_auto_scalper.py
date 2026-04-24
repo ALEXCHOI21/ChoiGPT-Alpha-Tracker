@@ -1,9 +1,10 @@
 """
-ChoiGPT Bithumb Agentic Auto-Scalper v3.0
+ChoiGPT Bithumb Agentic Auto-Scalper v4.0
 ==========================================
 Phase 1: 실전 매매 (TP/SL + 상태 영속화)
 Phase 2: 방어력 강화 (바이낸스 동기화 + import 방어)
 Phase 3: 초격차 (Trailing Stop + 거래일지 + 텔레그램)
+Phase 4: 기술적 분석 (RSI + 볼린저 + MA 크로스 + MACD)
 """
 import os
 import time
@@ -15,6 +16,7 @@ import logging
 import requests
 from datetime import datetime
 from typing import Dict, List, Optional
+from technical_analyzer import TechnicalAnalyzer
 
 # [Phase 2] SecretVault import 방어
 try:
@@ -48,7 +50,7 @@ TRAILING_ACTIVATION_PCT = 1.0   # Trailing Stop 활성화 기준 (%)
 TRAILING_DISTANCE_PCT = 0.7     # Trailing Stop 거리 (%)
 TIME_CUT_HOURS = 4              # 시간 제한 (시간)
 KIMCHI_PREMIUM_LIMIT = 5.0      # 김프 진입 차단 기준 (%)
-VOLUME_THRESHOLD = 30_000_000_000  # 거래대금 최소 기준 (300억)
+VOLUME_THRESHOLD = 5_000_000_000   # 거래대금 최소 기준 (50억)
 CHANGE_LIMIT = 1.0              # 변동률 매집 기준 (%)
 
 STATE_FILE = "scalper_state.json"
@@ -407,6 +409,9 @@ class BithumbScalper:
             if c["symbol"] not in final_targets:
                 final_targets.append(c["symbol"])
 
+        # [Phase 4] 기술적 분석 엔진
+        ta = TechnicalAnalyzer()
+
         for symbol in final_targets[:open_slots]:
             if symbol in positions:
                 continue
@@ -416,6 +421,20 @@ class BithumbScalper:
             if ticker.get("status") != "0000":
                 continue
             current_price = float(ticker["data"]["closing_price"])
+
+            # [Phase 4] 기술적 분석 게이트 — BUY 판정만 통과
+            ta_result = ta.analyze(symbol)
+            verdict = ta_result.get("verdict", "HOLD")
+            ta_score = ta_result.get("score", 0)
+            ta_reasons = ta_result.get("reasons", [])
+
+            if verdict != "BUY":
+                logger.info(f"🚫 {symbol} TA 차단: {verdict} (점수 {ta_score}) → {', '.join(ta_reasons[:2])}")
+                continue
+
+            logger.info(f"✅ {symbol} TA 통과: {verdict} (점수 {ta_score})")
+            for r in ta_reasons:
+                logger.info(f"   → {r}")
 
             # [Phase 1] 실전 매수 (시장가, 총액 기준)
             logger.info(f"📈 매수 시도: {symbol} @ {current_price:,.0f}원 (₩{POS_SIZE_KRW:,})")
@@ -433,14 +452,17 @@ class BithumbScalper:
                 logger.info(f"✅ 매수 체결: {symbol} {volume:.4f}개 @ {current_price:,.0f}원")
 
                 # [Phase 3] 거래 일지 기록
-                self._log_trade("BUY", symbol, current_price, volume, "Brain+Market Signal", 0, 0)
+                self._log_trade("BUY", symbol, current_price, volume,
+                                f"TA Score {ta_score} | {', '.join(ta_reasons[:2])}", 0, 0)
 
                 # [Phase 3] 텔레그램 알림
                 self._send_telegram(
                     f"📈 {symbol} 매수 체결!\n"
                     f"가격: {current_price:,.0f}원\n"
                     f"수량: {volume:.4f}개\n"
-                    f"투입금: ₩{POS_SIZE_KRW:,}"
+                    f"투입금: ₩{POS_SIZE_KRW:,}\n"
+                    f"TA: {verdict} ({ta_score}점)\n"
+                    f"근거: {', '.join(ta_reasons[:2])}"
                 )
 
         self._save_state()
