@@ -1,5 +1,5 @@
 {
-    "last_updated": "2026-04-24 09:16:55",
+    "last_updated": "2026-04-24 09:18:59",
     "wallet": {
         "total_usdt": 0,
         "free_usdt": 0,
@@ -7,58 +7,7 @@
     },
     "bithumb": {
         "total_krw": 0,
-        "domestic_gems": [
-            {
-                "symbol": "USDT",
-                "price": 1487.0,
-                "change": 0.13,
-                "volume_24h": 991.07,
-                "social_buzz_factor": 1.1065,
-                "has_meme_narrative": false,
-                "score": 99.3,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "ETH",
-                "price": 3468000.0,
-                "change": -0.43,
-                "volume_24h": 696.91,
-                "social_buzz_factor": 1.1215000000000002,
-                "has_meme_narrative": false,
-                "score": 97.8,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "BTC",
-                "price": 116409000.0,
-                "change": 0.98,
-                "volume_24h": 751.47,
-                "social_buzz_factor": 1.149,
-                "has_meme_narrative": false,
-                "score": 95.1,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "XRP",
-                "price": 2137.0,
-                "change": 1.52,
-                "volume_24h": 580.48,
-                "social_buzz_factor": 1.1760000000000002,
-                "has_meme_narrative": false,
-                "score": 92.4,
-                "status": "DOMESTIC_ACCUM"
-            },
-            {
-                "symbol": "SOL",
-                "price": 128100.0,
-                "change": 0.31,
-                "volume_24h": 134.73,
-                "social_buzz_factor": 1.1155000000000002,
-                "has_meme_narrative": false,
-                "score": 61.9,
-                "status": "DOMESTIC_ACCUM"
-            }
-        ]
+        "domestic_gems": []
     },
     "market_health": {
         "fear_greed": {
@@ -68,8 +17,8 @@
         },
         "kimchi_premium": {
             "premium_pct": 0.6,
-            "upbit_price": 116511000.0,
-            "binance_price_usdt": 78255.1,
+            "upbit_price": 116510000.0,
+            "binance_price_usdt": 78252.8,
             "exchange_rate": 1480.0
         }
     },
