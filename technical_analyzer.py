@@ -114,40 +114,48 @@ class TechnicalAnalyzer:
         }
 
     # ═══════════════════════════════════════════════════════════
-    # 이동평균선 (MA) + 골든크로스/데드크로스
+    # EMA 9/21 (고수 기법) & VWAP & MTF
     # ═══════════════════════════════════════════════════════════
-    def calc_ma(self, closes: List[float], period: int) -> float:
-        """단순 이동평균(SMA) 계산"""
-        if len(closes) < period:
-            return 0.0
-        return round(sum(closes[-period:]) / period, 2)
-
-    def detect_cross(self, closes: List[float],
-                     short_period: int = 5, long_period: int = 20) -> str:
-        """
-        골든크로스 / 데드크로스 감지
-        - GOLDEN: 단기 MA가 장기 MA를 위로 돌파 → 상승 전환
-        - DEAD: 단기 MA가 장기 MA를 아래로 돌파 → 하락 전환
-        - NONE: 교차 없음
-        """
+    def detect_ema_cross(self, closes: List[float],
+                         short_period: int = 9, long_period: int = 21) -> str:
+        """EMA 골든크로스 / 데드크로스 감지"""
         if len(closes) < long_period + 2:
             return "NONE"
+            
+        short_emas = self.calc_ema(closes, short_period)
+        long_emas = self.calc_ema(closes, long_period)
+        
+        if len(short_emas) < 2 or len(long_emas) < 2:
+            return "NONE"
 
-        # 현재와 이전의 MA 비교
-        current_short = self.calc_ma(closes, short_period)
-        current_long = self.calc_ma(closes, long_period)
+        current_short, prev_short = short_emas[-1], short_emas[-2]
+        current_long, prev_long = long_emas[-1], long_emas[-2]
 
-        prev_closes = closes[:-1]
-        prev_short = self.calc_ma(prev_closes, short_period)
-        prev_long = self.calc_ma(prev_closes, long_period)
-
-        # 이전: short < long → 현재: short > long → 골든크로스
         if prev_short <= prev_long and current_short > current_long:
             return "GOLDEN"
-        # 이전: short > long → 현재: short < long → 데드크로스
         elif prev_short >= prev_long and current_short < current_long:
             return "DEAD"
         return "NONE"
+
+    def calc_vwap(self, candles: List[dict]) -> float:
+        """VWAP (Volume Weighted Average Price) 계산"""
+        total_value = 0.0
+        total_volume = 0.0
+        for c in candles:
+            typical_price = (c["high"] + c["low"] + c["close"]) / 3
+            total_value += typical_price * c["volume"]
+            total_volume += c["volume"]
+        return round(total_value / total_volume, 2) if total_volume else 0.0
+
+    def check_mtf_trend(self, symbol: str) -> str:
+        """1시간봉 기반 Multi-Timeframe Filter"""
+        candles = self.get_candles(symbol, "1h", 30)
+        if len(candles) < 22:
+            return "NEUTRAL"
+        closes = [c["close"] for c in candles]
+        ema9 = self.calc_ema(closes, 9)[-1]
+        ema21 = self.calc_ema(closes, 21)[-1]
+        return "UPTREND" if ema9 > ema21 else "DOWNTREND"
 
     # ═══════════════════════════════════════════════════════════
     # MACD (Moving Average Convergence Divergence)
@@ -228,10 +236,14 @@ class TechnicalAnalyzer:
         # 2. Bollinger Bands
         bb = self.calc_bollinger(closes)
 
-        # 3. 이동평균선 크로스
-        cross = self.detect_cross(closes, short_period=5, long_period=20)
-        ma5 = self.calc_ma(closes, 5)
-        ma20 = self.calc_ma(closes, 20)
+        # 3. EMA 9/21 크로스 & VWAP & MTF
+        cross = self.detect_ema_cross(closes, 9, 21)
+        emas = self.calc_ema(closes, 9)
+        ema9 = emas[-1] if emas else 0
+        ema21_list = self.calc_ema(closes, 21)
+        ema21 = ema21_list[-1] if ema21_list else 0
+        vwap = self.calc_vwap(candles)
+        mtf_trend = self.check_mtf_trend(symbol)
 
         # 4. MACD
         macd = self.calc_macd(closes)
@@ -268,16 +280,32 @@ class TechnicalAnalyzer:
         # 골든크로스/데드크로스 점수 (-25 ~ +25)
         if cross == "GOLDEN":
             score += 25
-            reasons.append("골든크로스 발생! (강력 상승 전환)")
+            reasons.append("EMA 9/21 골든크로스! (강력 매수)")
         elif cross == "DEAD":
             score -= 25
-            reasons.append("데드크로스 발생 (하락 전환)")
-        elif ma5 > ma20:
+            reasons.append("EMA 9/21 데드크로스 (매도)")
+        elif ema9 > ema21:
             score += 5
-            reasons.append("단기 MA > 장기 MA (상승 추세)")
+            reasons.append("EMA 9 > EMA 21 (상승 추세)")
         else:
             score -= 5
-            reasons.append("단기 MA < 장기 MA (하락 추세)")
+            reasons.append("EMA 9 < EMA 21 (하락 추세)")
+
+        # VWAP 점수 (-15 ~ +15)
+        if current_price < vwap:
+            score += 15
+            reasons.append(f"VWAP 하회 (반등 기대, VWAP: {vwap:,.0f})")
+        else:
+            score -= 15
+            reasons.append(f"VWAP 상회 (조정 주의, VWAP: {vwap:,.0f})")
+
+        # MTF 점수 (필터)
+        if mtf_trend == "DOWNTREND":
+            score -= 50  # 1시간봉 하락장 시 강력 차단
+            reasons.append("1시간봉 DOWNTREND (매수 차단)")
+        elif mtf_trend == "UPTREND":
+            score += 10
+            reasons.append("1시간봉 UPTREND (상승 동력)")
 
         # MACD 점수 (-20 ~ +20)
         if macd["trend"] == "BULLISH":
@@ -303,9 +331,11 @@ class TechnicalAnalyzer:
             "indicators": {
                 "rsi": rsi,
                 "bollinger": bb,
-                "ma5": ma5,
-                "ma20": ma20,
+                "ema9": ema9,
+                "ema21": ema21,
                 "cross": cross,
+                "vwap": vwap,
+                "mtf_trend": mtf_trend,
                 "macd": macd,
                 "current_price": current_price
             }
@@ -327,7 +357,8 @@ if __name__ == "__main__":
     print(f"\n  [지표 상세]")
     ind = result['indicators']
     print(f"  RSI(14): {ind['rsi']}")
-    print(f"  MA(5): {ind['ma5']:,.0f} / MA(20): {ind['ma20']:,.0f}")
+    print(f"  EMA(9): {ind['ema9']:,.0f} / EMA(21): {ind['ema21']:,.0f}")
+    print(f"  VWAP: {ind['vwap']:,.0f} / MTF: {ind['mtf_trend']}")
     print(f"  크로스: {ind['cross']}")
     print(f"  볼린저: 상단 {ind['bollinger']['upper']:,.0f} | 중간 {ind['bollinger']['middle']:,.0f} | 하단 {ind['bollinger']['lower']:,.0f}")
     print(f"  MACD: {ind['macd']['macd']} / Signal: {ind['macd']['signal']} ({ind['macd']['trend']})")
