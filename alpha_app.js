@@ -57,9 +57,47 @@ function updateUI(data) {
 
     if (data.bithumb) {
         document.getElementById('bithumbTotal').innerText = data.bithumb.total_krw.toLocaleString() + ' KRW';
+        
+        // 0-A. Bithumb Active Positions
+        const btPosContainer = document.getElementById('bithumbPositions');
+        if (data.bithumb.active_positions && data.bithumb.active_positions.length > 0) {
+            btPosContainer.innerHTML = '';
+            data.bithumb.active_positions.forEach(p => {
+                const profitPct = ((p.value_krw / (p.balance * p.avg_buy)) - 1) * 100;
+                const color = profitPct >= 0 ? 'var(--success)' : 'var(--danger)';
+                const div = document.createElement('div');
+                div.style = `padding: 0.4rem 0.8rem; background: rgba(255,255,255,0.05); border-radius: 6px; border-left: 2px solid ${color}; display: flex; flex-direction: column; gap: 0.1rem; min-width: 100px;`;
+                div.innerHTML = `
+                    <div style="font-weight: 700; font-size: 0.8rem;">${p.symbol}</div>
+                    <div style="font-size: 0.85rem; font-weight: 800; color: ${color};">${profitPct >= 0 ? '+' : ''}${profitPct.toFixed(1)}%</div>
+                `;
+                btPosContainer.appendChild(div);
+            });
+        } else {
+            btPosContainer.innerHTML = '<span style="color: var(--text-sub); font-size: 0.75rem;">No KRW Positions</span>';
+        }
+
+        // 0-B. Scalper Monitoring (Watching Targets)
+        const watchingContainer = document.getElementById('watchingTargets');
+        if (data.bithumb.watching_targets && data.bithumb.watching_targets.length > 0) {
+            watchingContainer.innerHTML = '';
+            data.bithumb.watching_targets.forEach(t => {
+                const div = document.createElement('div');
+                div.style = `padding: 0.4rem 0.8rem; background: rgba(0,255,255,0.05); border-radius: 6px; border-left: 2px solid var(--accent-secondary); display: flex; flex-direction: column; gap: 0.1rem; min-width: 100px;`;
+                div.innerHTML = `
+                    <div style="font-weight: 700; font-size: 0.75rem; color: var(--text-sub);">WATCHING</div>
+                    <div style="font-size: 0.9rem; font-weight: 800; color: #fff;">${t.symbol}</div>
+                    <div style="font-size: 0.7rem; color: var(--accent-secondary); font-weight: 700;">VOL. ${(t.volume/100000000).toFixed(0)}억</div>
+                `;
+                watchingContainer.appendChild(div);
+            });
+        } else {
+            watchingContainer.innerHTML = '<span style="color: var(--text-sub); font-size: 0.75rem;">Scanning Market...</span>';
+        }
+
         const btGemsContainer = document.getElementById('bithumbGems');
-        if (data.bithumb.domestic_gems && data.bithumb.domestic_gems.length > 0) {
-            btGemsContainer.innerHTML = data.bithumb.domestic_gems.map(gem => 
+        if (data.bithumb.bithumb_gems && data.bithumb.bithumb_gems.length > 0) {
+            btGemsContainer.innerHTML = data.bithumb.bithumb_gems.map(gem => 
                 `<span style="display:inline-block; margin-right:8px; padding:2px 6px; background:rgba(255,94,0,0.1); border-radius:4px; color:#fff; font-weight:700;">
                     ${gem.symbol} <small style="color:#ff5e00;">${gem.score}</small>
                 </span>`
