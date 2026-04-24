@@ -1,0 +1,49 @@
+name: ChoiGPT Bithumb Auto-Scalper v3.0
+
+on:
+  schedule:
+    - cron: '*/5 * * * *' # 5분마다 실행
+  workflow_dispatch: # 수동 실행 허용
+
+jobs:
+  scalp:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 상태 파일 커밋 권한
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install Dependencies
+      run: |
+        pip install requests PyJWT
+
+    - name: Step 1 - Update Strategy Brain
+      env:
+        BITHUMB_API_KEY: ${{ secrets.BITHUMB_API_KEY }}
+        BITHUMB_SECRET_KEY: ${{ secrets.BITHUMB_SECRET_KEY }}
+      run: |
+        python daily_strategy_builder.py
+
+    - name: Step 2 - Execute Scalper Cycle
+      env:
+        BITHUMB_API_KEY: ${{ secrets.BITHUMB_API_KEY }}
+        BITHUMB_SECRET_KEY: ${{ secrets.BITHUMB_SECRET_KEY }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      run: |
+        python bithumb_auto_scalper.py
+
+    - name: Step 3 - Commit State & Trade Log
+      run: |
+        git config user.name "ChoiGPT Bot"
+        git config user.email "bot@choigpt.corp"
+        git add scalper_state.json TRADE_LOG.md SCALPER_STRATEGY_REPORT.md || true
+        git diff --staged --quiet || git commit -m "🤖 Auto: state sync $(date +'%H:%M')"
+        git push || true
