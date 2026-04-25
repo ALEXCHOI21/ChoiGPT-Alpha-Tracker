@@ -1,5 +1,5 @@
 {
-    "last_updated": "2026-04-25 15:13:03",
+    "last_updated": "2026-04-25 15:21:33",
     "wallet": {
         "total_usdt": 0,
         "free_usdt": 0,
@@ -11,29 +11,29 @@
         "watching_targets": [
             {
                 "symbol": "USDT",
-                "price": 1489.0,
-                "volume": 64816808817.531555,
-                "change": 0.07
+                "price": 1488.0,
+                "volume": 64222896827.351295,
+                "change": -0.07
             },
             {
                 "symbol": "BTC",
-                "price": 115473000.0,
-                "volume": 41357238475.3695,
-                "change": -0.44
+                "price": 115453000.0,
+                "volume": 41315912138.93492,
+                "change": -0.43
             },
             {
                 "symbol": "XRP",
                 "price": 2133.0,
-                "volume": 38997999169.587906,
+                "volume": 38991971489.4573,
                 "change": 0.09
             }
         ],
         "bithumb_gems": [
             {
                 "symbol": "USDT",
-                "price": 1489.0,
-                "change": 0.07,
-                "volume_24h": 648.17,
+                "price": 1488.0,
+                "change": -0.07,
+                "volume_24h": 642.23,
                 "social_buzz_factor": 1.1035000000000001,
                 "has_meme_narrative": false,
                 "score": 99.7,
@@ -41,10 +41,10 @@
             },
             {
                 "symbol": "BTC",
-                "price": 115473000.0,
-                "change": -0.44,
-                "volume_24h": 413.57,
-                "social_buzz_factor": 1.122,
+                "price": 115453000.0,
+                "change": -0.43,
+                "volume_24h": 413.16,
+                "social_buzz_factor": 1.1215000000000002,
                 "has_meme_narrative": false,
                 "score": 89.2,
                 "status": "DOMESTIC_ACCUM"
@@ -53,7 +53,7 @@
                 "symbol": "XRP",
                 "price": 2133.0,
                 "change": 0.09,
-                "volume_24h": 389.98,
+                "volume_24h": 389.92,
                 "social_buzz_factor": 1.1045,
                 "has_meme_narrative": false,
                 "score": 88.5,
@@ -61,22 +61,22 @@
             },
             {
                 "symbol": "ETH",
-                "price": 3449000.0,
-                "change": 0.17,
-                "volume_24h": 304.44,
-                "social_buzz_factor": 1.1085,
+                "price": 3450000.0,
+                "change": 0.12,
+                "volume_24h": 303.17,
+                "social_buzz_factor": 1.106,
                 "has_meme_narrative": false,
-                "score": 79.6,
+                "score": 79.7,
                 "status": "DOMESTIC_ACCUM"
             },
             {
                 "symbol": "ZTX",
-                "price": 0.5961,
-                "change": -1.24,
-                "volume_24h": 182.24,
-                "social_buzz_factor": 1.1620000000000001,
+                "price": 0.6136,
+                "change": 0.61,
+                "volume_24h": 181.29,
+                "social_buzz_factor": 1.1305,
                 "has_meme_narrative": false,
-                "score": 62.0,
+                "score": 65.1,
                 "status": "DOMESTIC_ACCUM"
             }
         ]
@@ -88,19 +88,19 @@
             "timestamp": "2026-04-25 09:00"
         },
         "kimchi_premium": {
-            "premium_pct": 0.72,
-            "upbit_price": 115544000.0,
-            "binance_price_usdt": 77515.2,
+            "premium_pct": 0.73,
+            "upbit_price": 115480000.0,
+            "binance_price_usdt": 77459.0,
             "exchange_rate": 1480.0
         }
     },
     "alpha_signals": [
         {
             "symbol": "APE",
-            "price": 0.2036,
-            "change": 93.169,
-            "volume_24h": 1477.49,
-            "social_buzz_factor": 10.8169,
+            "price": 0.2008,
+            "change": 88.722,
+            "volume_24h": 1482.1,
+            "social_buzz_factor": 10.3722,
             "has_meme_narrative": false,
             "score": 50,
             "analogy": {
@@ -113,26 +113,26 @@
         },
         {
             "symbol": "TRADOOR",
-            "price": 1.193,
-            "change": -86.617,
-            "volume_24h": 358.63,
-            "social_buzz_factor": 10.1617,
+            "price": 1.2,
+            "change": -86.547,
+            "volume_24h": 360.15,
+            "social_buzz_factor": 10.1547,
             "has_meme_narrative": false,
-            "score": 35.9,
+            "score": 36.0,
             "analogy": {
                 "case_id": "WIF_2024",
                 "case_name": "The Hat On Supercycle",
-                "similarity": 42.9,
+                "similarity": 43.0,
                 "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
             },
             "status": "DUMPING"
         },
         {
             "symbol": "KAT",
-            "price": 0.02376,
-            "change": 51.145,
-            "volume_24h": 1233.71,
-            "social_buzz_factor": 6.6145000000000005,
+            "price": 0.02344,
+            "change": 56.475,
+            "volume_24h": 1222.51,
+            "social_buzz_factor": 7.1475,
             "has_meme_narrative": false,
             "score": 50,
             "analogy": {
@@ -145,12 +145,12 @@
         },
         {
             "symbol": "API3",
-            "price": 0.4598,
-            "change": 50.409,
-            "volume_24h": 198.97,
-            "social_buzz_factor": 6.5409,
+            "price": 0.4533,
+            "change": 47.944,
+            "volume_24h": 201.04,
+            "social_buzz_factor": 6.2944,
             "has_meme_narrative": false,
-            "score": 19.9,
+            "score": 20.1,
             "analogy": {
                 "case_id": "PEPE_2023",
                 "case_name": "The Meme Viral Loop",
@@ -161,10 +161,10 @@
         },
         {
             "symbol": "D",
-            "price": 0.012645,
-            "change": 39.987,
-            "volume_24h": 74.63,
-            "social_buzz_factor": 5.4987,
+            "price": 0.01269,
+            "change": 39.974,
+            "volume_24h": 74.78,
+            "social_buzz_factor": 5.4974,
             "has_meme_narrative": false,
             "score": 7.5,
             "analogy": {
@@ -177,28 +177,12 @@
         },
         {
             "symbol": "AXS",
-            "price": 1.407,
-            "change": 27.909,
-            "volume_24h": 89.95,
-            "social_buzz_factor": 4.2909,
+            "price": 1.47,
+            "change": 33.273,
+            "volume_24h": 102.7,
+            "social_buzz_factor": 4.8273,
             "has_meme_narrative": false,
-            "score": 9.0,
-            "analogy": {
-                "case_id": "WIF_2024",
-                "case_name": "The Hat On Supercycle",
-                "similarity": 25,
-                "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
-            },
-            "status": "PUMPING"
-        },
-        {
-            "symbol": "PUMPBTC",
-            "price": 0.02621,
-            "change": 25.048,
-            "volume_24h": 60.71,
-            "social_buzz_factor": 4.0047999999999995,
-            "has_meme_narrative": false,
-            "score": 6.1,
+            "score": 10.3,
             "analogy": {
                 "case_id": "WIF_2024",
                 "case_name": "The Hat On Supercycle",
@@ -209,10 +193,10 @@
         },
         {
             "symbol": "BULLA",
-            "price": 0.008065,
-            "change": -23.677,
-            "volume_24h": 23.77,
-            "social_buzz_factor": 3.8677,
+            "price": 0.008171,
+            "change": -22.601,
+            "volume_24h": 23.86,
+            "social_buzz_factor": 3.7601,
             "has_meme_narrative": false,
             "score": 2.4,
             "analogy": {
@@ -222,49 +206,49 @@
                 "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
             },
             "status": "DUMPING"
+        },
+        {
+            "symbol": "PUMPBTC",
+            "price": 0.02582,
+            "change": 20.824,
+            "volume_24h": 60.8,
+            "social_buzz_factor": 3.5824000000000003,
+            "has_meme_narrative": false,
+            "score": 6.1,
+            "analogy": {
+                "case_id": "WIF_2024",
+                "case_name": "The Hat On Supercycle",
+                "similarity": 25,
+                "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
+            },
+            "status": "PUMPING"
         }
     ],
     "accumulation_gems": [
         {
             "symbol": "ETH",
-            "price": 2315.52,
-            "change": 0.143,
-            "volume_24h": 5527.87,
-            "social_buzz_factor": 1.5143,
+            "price": 2313.9,
+            "change": -0.031,
+            "volume_24h": 5498.64,
+            "social_buzz_factor": 1.5031,
             "has_meme_narrative": false,
-            "score": 99.3,
+            "score": 99.8,
             "analogy": {
                 "case_id": "WIF_2024",
                 "case_name": "The Hat On Supercycle",
-                "similarity": 60.6,
+                "similarity": 60.7,
                 "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
             },
             "status": "ACCUMULATING"
         },
         {
             "symbol": "BTC",
-            "price": 77515.2,
-            "change": -0.468,
-            "volume_24h": 7950.29,
-            "social_buzz_factor": 1.5468,
+            "price": 77459.1,
+            "change": -0.561,
+            "volume_24h": 7935.59,
+            "social_buzz_factor": 1.5561,
             "has_meme_narrative": false,
-            "score": 97.7,
-            "analogy": {
-                "case_id": "WIF_2024",
-                "case_name": "The Hat On Supercycle",
-                "similarity": 60.3,
-                "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
-            },
-            "status": "ACCUMULATING"
-        },
-        {
-            "symbol": "XAU",
-            "price": 4711.68,
-            "change": 0.582,
-            "volume_24h": 816.71,
-            "social_buzz_factor": 1.5582,
-            "has_meme_narrative": false,
-            "score": 97.1,
+            "score": 97.2,
             "analogy": {
                 "case_id": "WIF_2024",
                 "case_name": "The Hat On Supercycle",
@@ -274,11 +258,27 @@
             "status": "ACCUMULATING"
         },
         {
-            "symbol": "CL",
-            "price": 94.93,
-            "change": -0.732,
-            "volume_24h": 798.58,
-            "social_buzz_factor": 1.5732,
+            "symbol": "XAU",
+            "price": 4711.67,
+            "change": 0.727,
+            "volume_24h": 810.64,
+            "social_buzz_factor": 1.5727,
+            "has_meme_narrative": false,
+            "score": 96.4,
+            "analogy": {
+                "case_id": "WIF_2024",
+                "case_name": "The Hat On Supercycle",
+                "similarity": 60.0,
+                "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
+            },
+            "status": "ACCUMULATING"
+        },
+        {
+            "symbol": "SOL",
+            "price": 86.23,
+            "change": 0.736,
+            "volume_24h": 1120.59,
+            "social_buzz_factor": 1.5735999999999999,
             "has_meme_narrative": false,
             "score": 96.3,
             "analogy": {
@@ -290,29 +290,13 @@
             "status": "ACCUMULATING"
         },
         {
-            "symbol": "SOL",
-            "price": 86.3,
-            "change": 0.83,
-            "volume_24h": 1122.16,
-            "social_buzz_factor": 1.583,
+            "symbol": "CL",
+            "price": 94.9,
+            "change": -0.919,
+            "volume_24h": 792.94,
+            "social_buzz_factor": 1.5919,
             "has_meme_narrative": false,
-            "score": 95.8,
-            "analogy": {
-                "case_id": "WIF_2024",
-                "case_name": "The Hat On Supercycle",
-                "similarity": 59.9,
-                "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
-            },
-            "status": "ACCUMULATING"
-        },
-        {
-            "symbol": "XAG",
-            "price": 75.76,
-            "change": 0.946,
-            "volume_24h": 692.54,
-            "social_buzz_factor": 1.5946,
-            "has_meme_narrative": false,
-            "score": 95.3,
+            "score": 95.4,
             "analogy": {
                 "case_id": "WIF_2024",
                 "case_name": "The Hat On Supercycle",
@@ -322,33 +306,49 @@
             "status": "ACCUMULATING"
         },
         {
-            "symbol": "XRP",
-            "price": 1.4325,
-            "change": 0.084,
-            "volume_24h": 437.85,
-            "social_buzz_factor": 1.5084,
+            "symbol": "XAG",
+            "price": 75.75,
+            "change": 1.216,
+            "volume_24h": 687.31,
+            "social_buzz_factor": 1.6216,
             "has_meme_narrative": false,
-            "score": 93.4,
+            "score": 93.9,
             "analogy": {
                 "case_id": "WIF_2024",
                 "case_name": "The Hat On Supercycle",
-                "similarity": 57.5,
+                "similarity": 59.6,
+                "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
+            },
+            "status": "ACCUMULATING"
+        },
+        {
+            "symbol": "XRP",
+            "price": 1.4317,
+            "change": 0.042,
+            "volume_24h": 434.06,
+            "social_buzz_factor": 1.5042,
+            "has_meme_narrative": false,
+            "score": 93.2,
+            "analogy": {
+                "case_id": "WIF_2024",
+                "case_name": "The Hat On Supercycle",
+                "similarity": 57.4,
                 "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
             },
             "status": "ACCUMULATING"
         },
         {
             "symbol": "DOGE",
-            "price": 0.09844,
-            "change": 1.182,
-            "volume_24h": 450.26,
-            "social_buzz_factor": 1.6182,
+            "price": 0.09829,
+            "change": 0.738,
+            "volume_24h": 448.83,
+            "social_buzz_factor": 1.5738,
             "has_meme_narrative": true,
-            "score": 89.1,
+            "score": 91.2,
             "analogy": {
                 "case_id": "WIF_2024",
                 "case_name": "The Hat On Supercycle",
-                "similarity": 82.1,
+                "similarity": 82.5,
                 "description": "KOL들의 집중적인 밈화 및 답글 릴레이로 인한 생태계 폭발"
             },
             "status": "ACCUMULATING"
